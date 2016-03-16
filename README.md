@@ -1,8 +1,8 @@
 # VueSuggest
 
-<p align="center"><a href="http://cmaas.github.io/VueSuggest/" target="_blank"><img width="100"src="http://cmaas.github.io/VueSuggest/lightbulb.svg"></a></p>
+<p align="center"><a href="https://cmaas.github.io/VueSuggest/" target="_blank"><img width="100"src="https://cmaas.github.io/VueSuggest/lightbulb.svg"></a></p>
 
-[Click for Demo](http://cmaas.github.io/VueSuggest/)
+[Click for Demo](https://cmaas.github.io/VueSuggest/)
 
 I made VueSuggest to learn [Vue.js](http://vuejs.org/).
 
