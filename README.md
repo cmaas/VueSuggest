@@ -1,6 +1,6 @@
 # VueSuggest
 
-<img src="https://raw.githubusercontent.com/cmaas/VueSuggest/gh-pages/lightbulb.svg" width="40" alt="VueSuggest Logo">
+<p align="center"><a href="http://cmaas.github.io/VueSuggest/" target="_blank"><img width="100"src="http://cmaas.github.io/VueSuggest/lightbulb.svg"></a></p>
 
 I made VueSuggest to learn [Vue.js](http://vuejs.org/).
 
