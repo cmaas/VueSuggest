@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VueSuggest &ndash; Get Google Keyword Suggestions</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="container">
+        <section class="header">
+            <img src="lightbulb.svg" height="40"><!-- image by Recep Kütük: https://www.iconfinder.com/recepkutuk -->
+            <h1>VueSuggest</h1>
+            <p style="margin-top:-2rem">Get Google Keyword Suggestions</p>
+        </section>
+
+        <section id="app" class="main">
+            <div class="row">
+                <div class="five columns">
+                    <input class="u-full-width" type="text" name="keyword" id="keyword" placeholder="Keyword" v-model="keyword">
+                </div>
+                <div class="five columns">
+                    <select class="u-full-width" name="strategy" v-model="selectedStrategyName">
+                        <option v-for="strategy in strategies">{{ strategy.name }}</option>
+                    </select>
+                </div>
+                <div class="two columns">
+                    <button :class="{ 'button-primary': (selectedStrategy && keyword) }" @click="getSuggestions">Get {{ numRequests }}</button>
+                </div>
+            </div>
+
+            <div class="results" v-show="suggestionResults.length > 0">
+                <div class="row">
+                    <h4><b>All Results ({{ suggestionResultsCount }}):</b><span class="u-pull-right">Executed: {{ executed }}</span></h4>
+                    <textarea class="u-full-width" onclick="this.select();">{{ suggestionResultsRaw }}</textarea>
+                </div>
+
+                <div class="row">
+                    <hr>            
+                    <h4><b>Keyword Results:</b></h4>
+                    <suggestion-result
+                        v-for="result in suggestionResults"
+                        :keyword="result.keyword"
+                        :suggestions="result.suggestions"
+                        :index="$index"></suggestion-result>
+                </div>
+            </div>
+
+            <div class="row help-box">
+                <p>I made VueSuggest to learn <a href="http://vuejs.org">Vue.js</a>.</p>
+                <p>VueSuggest is a small but useful tool to get suggestions from Google for a keyword. These suggestions can then be copied into Google's Keyword Planner to get estimates on monthly search volume. Furthermore, the suggestions are a perfect way to start a blog article for a topic, because it helps you to write about stuff people are actually searching for.</p>
+                <p>VueSuggest uses an inofficial Google API. The same one like your browser uses. Google's API shouldn't be spammed with requests. Therefore, VueSuggest processes keyword suggestions in batches. If you get blocked by Google, visit Google.com and enter the CAPTCHA.<br>Feel free to change the following settings via the browser console:</p>
+                <p>app.batchSize = {{ batchSize }} | app.batchDelay = {{ batchDelay }} | app.batchPause = {{ batchPause }}</p>
+                <p>Selected language:<br>app.lang = "{{ lang }}"</p>
+            </div>
+
+            <div id="script-container"></div>
+        </section>
+    </div>
+
+    <template id="suggestion-result-template">
+        <div class="suggestion-result">
+            <h4>{{ keyword }}</h4>
+            <pre class="u-full-width">{{ suggestions | join }}</pre>
+        </div>
+    </template>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.17/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('keyword').focus();
+        };
+    </script>
+</body>
+</html>
