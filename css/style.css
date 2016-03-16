@@ -1,0 +1,41 @@
+body {
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.container {
+    max-width: 800px;
+}
+.header {
+    margin-top: 6rem;
+    text-align: center;
+}
+h1 {
+    font-family: monospace;
+    font-size: 3.6rem;
+    line-height: 1.25;
+    letter-spacing: -.1rem;
+}
+h4 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    letter-spacing: 0;
+    margin: 1rem 0 0;
+    font-family: monospace;
+}
+.suggestion-result {
+    border-bottom: 1px solid #eee;
+}
+.suggestion-result pre {
+    border: 1px solid lightgrey;
+    border-radius: 4px;
+    background: #eee;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+.help-box {
+    font-family: monospace;
+    font-size: 1.4rem;
+    color: #aaa;
+    text-align: center;
+    margin-top: 5rem;
+}
